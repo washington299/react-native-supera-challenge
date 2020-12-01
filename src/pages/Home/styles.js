@@ -16,10 +16,3 @@ export const ProductsArea = styled.View`
   flex-wrap: wrap;
   padding: 20px 10px;
 `;
-
-export const Product = styled.View`
-  width: 47%;
-  height: 200px;
-  margin: 5px;
-  background-color: lightblue;
-`;
