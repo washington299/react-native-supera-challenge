@@ -34,7 +34,7 @@ const Routes = () => (
       })}
     />
     <Stack.Screen
-      name="Shopping Cart"
+      name="Shopping"
       component={ShoppingCartList}
       options={{ title: 'Shopping cart' }}
     />

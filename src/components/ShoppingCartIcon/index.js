@@ -4,7 +4,7 @@ import { TouchableOpacity } from 'react-native';
 import CartIcon from '../../../assets/cart-icon.svg';
 
 const ShoppingCartIcon = ({ navigation }) => (
-  <TouchableOpacity onPress={() => navigation.navigate('Shopping Cart')}>
+  <TouchableOpacity onPress={() => navigation.navigate('Shopping')}>
     <CartIcon />
   </TouchableOpacity>
 );
