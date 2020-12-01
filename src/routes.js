@@ -2,7 +2,9 @@ import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 
 import Home from './pages/Home';
-import ShoppingCart from './pages/ShoppingCart';
+import ShoppingCartList from './pages/ShoppingCartList';
+
+import ShoppingCartIcon from './components/ShoppingCartIcon';
 
 const Stack = createStackNavigator();
 
@@ -23,11 +25,17 @@ const Routes = () => (
     <Stack.Screen
       name="Home"
       component={Home}
-      options={{ title: 'Games' }}
+      options={({ navigation }) => ({
+        title: 'Games',
+        headerRight: () => <ShoppingCartIcon navigation={navigation} />,
+        headerRightContainerStyle: {
+          paddingRight: 5,
+        },
+      })}
     />
     <Stack.Screen
-      name="Details"
-      component={ShoppingCart}
+      name="Shopping Cart"
+      component={ShoppingCartList}
       options={{ title: 'Shopping cart' }}
     />
   </Stack.Navigator>
