@@ -1,10 +1,25 @@
 import styled from 'styled-components/native';
 
 export default styled.View`
-  padding: 0 10px;
+  flex: 1;
+  background-color: #FFF;
 `;
 
 export const FilterArea = styled.View`
   height: 50px;
   background-color: #FFE;
+`;
+
+export const ProductsArea = styled.View`
+  flex:1;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding: 20px 10px;
+`;
+
+export const Product = styled.View`
+  width: 47%;
+  height: 200px;
+  margin: 5px;
+  background-color: lightblue;
 `;
