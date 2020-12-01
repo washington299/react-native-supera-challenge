@@ -3,7 +3,7 @@ import { Text } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import axios from 'axios';
 
-import Product from '../../components/ShoppingCartIcon/Product';
+import Product from '../../components/Product';
 
 import Container, { FilterArea, ProductsArea } from './styles';
 
