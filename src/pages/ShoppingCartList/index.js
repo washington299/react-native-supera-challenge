@@ -3,7 +3,7 @@ import { View, Text } from 'react-native';
 
 const ShoppingCartList = () => (
   <View>
-    <Text>Shopping cart list</Text>
+    <Text>Lista de Produtos</Text>
   </View>
 );
 
