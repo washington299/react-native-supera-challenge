@@ -26,7 +26,12 @@ const Home = () => {
       <ScrollView>
         <ProductsArea>
           {games.map((game) => (
-            <Product key={game.id} img={game.image} />
+            <Product
+              key={game.id}
+              img={game.image}
+              name={game.name}
+              price={game.price}
+            />
           ))}
         </ProductsArea>
       </ScrollView>

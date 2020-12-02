@@ -11,7 +11,7 @@ export const FilterArea = styled.View`
 `;
 
 export const ProductsArea = styled.View`
-  flex:1;
+  flex: 1;
   flex-direction: row;
   flex-wrap: wrap;
   padding: 20px 10px;
