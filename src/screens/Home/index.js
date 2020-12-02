@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Text } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
-import axios from 'axios';
+
+import api from '../../services/api';
 
 import Product from '../../components/Product';
 
@@ -12,8 +13,8 @@ const Home = () => {
 
   useEffect(() => {
     async function getProducts() {
-      const res = await axios.get('http://10.0.0.16:19001/products.json');
-      setGame(res.data);
+      const res = await api.getProducts('/products.json');
+      setGame(res);
     }
     getProducts();
   }, []);
