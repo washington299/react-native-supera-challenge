@@ -21,10 +21,10 @@ const Home = () => {
 
   return (
     <Container>
-      <FilterArea>
-        <Text>Filter</Text>
-      </FilterArea>
       <ScrollView>
+        <FilterArea>
+          <Text>Filter</Text>
+        </FilterArea>
         <ProductsArea>
           {games.map((game) => (
             <Product
