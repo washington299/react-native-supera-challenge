@@ -1,11 +1,23 @@
 import React from 'react';
-import { Image } from 'react-native';
 
-import Container from './styles';
+import Container, {
+  Img, Info, Name, Price, Button, ButtonText,
+} from './styles';
 
-const Product = ({ img }) => (
+const Product = ({ img, name, price }) => (
   <Container>
-    <Image style={{ width: '100%', height: '100%' }} source={{ uri: `http://10.0.0.16:19001/assets/${img}` }} />
+    <Img source={{ uri: `http://10.0.0.16:19001/assets/${img}` }} />
+    <Info>
+      <Name>{name}</Name>
+      <Price>
+        Preço:
+        {' '}
+        {price}
+      </Price>
+    </Info>
+    <Button onPress={() => alert('Adicionado')}>
+      <ButtonText>Adicionar ao carrinho</ButtonText>
+    </Button>
   </Container>
 );
 
