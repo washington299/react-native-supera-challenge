@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { Text } from 'react-native';
 import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
-import Icon from 'react-native-vector-icons/AntDesign';
+import AntDesignIcon from 'react-native-vector-icons/AntDesign';
+import FoundationIcon from 'react-native-vector-icons/Foundation';
+import EntypoIcon from 'react-native-vector-icons/Entypo';
+import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
 
 import api from '../../services/api';
 
@@ -12,6 +15,8 @@ import Container, {
   FilterButton,
   FilterArea,
   FilterBox,
+  FilterOptions,
+  Option,
 } from './styles';
 
 const Home = () => {
@@ -31,9 +36,9 @@ const Home = () => {
       <ScrollView>
         <TouchableOpacity onPress={() => setHideFilters(false)}>
           <FilterButton>
-            <Icon.Button name="filter" backgroundColor="#1e90ff" color="#FFF">
+            <AntDesignIcon.Button name="filter" backgroundColor="#1e90ff" color="#FFF">
               <Text style={{ fontSize: 18, color: '#FFF' }}>Filtros</Text>
-            </Icon.Button>
+            </AntDesignIcon.Button>
           </FilterButton>
         </TouchableOpacity>
         <ProductsArea>
@@ -50,15 +55,43 @@ const Home = () => {
       {!hideFilters && (
         <FilterArea>
           <FilterBox>
-            <Icon.Button
+            <AntDesignIcon
               name="close"
               backgroundColor="#FFF"
               color="#AAA"
               size={28}
-              style={{ alignSelf: 'flex-end' }}
+              style={{
+                alignSelf: 'flex-end',
+                position: 'absolute',
+                top: 5,
+                right: 5,
+              }}
               onPress={() => setHideFilters(true)}
             />
-            <Text>Area dos filtros</Text>
+            <FilterOptions>
+              <Option>
+                <FoundationIcon name="arrows-out" backgroundColor="#FFF" color="#AAA" size={30} />
+              </Option>
+              <Text>Ordenar por padrão</Text>
+            </FilterOptions>
+            <FilterOptions>
+              <Option>
+                <FoundationIcon name="dollar" backgroundColor="#FFF" color="#AAA" size={46} />
+              </Option>
+              <Text>Preço</Text>
+            </FilterOptions>
+            <FilterOptions>
+              <Option>
+                <EntypoIcon name="game-controller" backgroundColor="#FFF" color="#AAA" size={28} />
+              </Option>
+              <Text>Pontuação</Text>
+            </FilterOptions>
+            <FilterOptions>
+              <Option>
+                <FontAwesomeIcon name="sort-alpha-asc" backgroundColor="#FFF" color="#AAA" size={28} />
+              </Option>
+              <Text>Ordem alfabética</Text>
+            </FilterOptions>
           </FilterBox>
         </FilterArea>
       )}
