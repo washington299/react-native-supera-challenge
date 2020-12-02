@@ -1,7 +1,14 @@
 import React from 'react';
 
+import formatCurrency from '../../helpers/formatCurrency';
+
 import Container, {
-  Img, Info, Name, Price, Button, ButtonText,
+  Img,
+  Info,
+  Name,
+  Price,
+  Button,
+  ButtonText,
 } from './styles';
 
 const Product = ({ img, name, price }) => (
@@ -12,7 +19,7 @@ const Product = ({ img, name, price }) => (
       <Price>
         Preço:
         {' '}
-        {price}
+        {formatCurrency(price)}
       </Price>
     </Info>
     <Button onPress={() => alert('Adicionado')}>
