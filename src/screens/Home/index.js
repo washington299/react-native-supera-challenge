@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Text } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
+import Icon from 'react-native-vector-icons/AntDesign';
 
 import api from '../../services/api';
 
@@ -23,7 +24,9 @@ const Home = () => {
     <Container>
       <ScrollView>
         <FilterArea>
-          <Text>Filter</Text>
+          <Icon.Button name="filter" backgroundColor="#1e90ff" color="#FFF">
+            <Text style={{ fontSize: 18, color: '#FFF' }}>Filtros</Text>
+          </Icon.Button>
         </FilterArea>
         <ProductsArea>
           {games.map((game) => (

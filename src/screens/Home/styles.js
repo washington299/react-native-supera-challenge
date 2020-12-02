@@ -5,9 +5,12 @@ export default styled.View`
   background-color: #FFF;
 `;
 
-export const FilterArea = styled.View`
-  height: 50px;
-  background-color: #FFE;
+export const FilterArea = styled.TouchableOpacity`
+  width: 120px;
+  justify-content: center;
+  margin: 20px;
+  border: 1px solid #DDD;
+  border-radius: 8px;
 `;
 
 export const ProductsArea = styled.View`
