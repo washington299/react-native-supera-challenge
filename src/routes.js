@@ -1,8 +1,8 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 
-import Home from './pages/Home';
-import ShoppingCartList from './pages/ShoppingCartList';
+import Home from './screens/Home';
+import ShoppingCartList from './screens/ShoppingCartList';
 
 import ShoppingCartIcon from './components/ShoppingCartIcon';
 
