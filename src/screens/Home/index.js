@@ -9,14 +9,13 @@ import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
 import api from '../../services/api';
 
 import Product from '../../components/Product';
+import FilterOption from '../../components/FilterOption';
 
 import Container, {
   ProductsArea,
   FilterButton,
   FilterArea,
   FilterBox,
-  FilterOptions,
-  Option,
 } from './styles';
 
 const Home = () => {
@@ -68,30 +67,22 @@ const Home = () => {
               }}
               onPress={() => setHideFilters(true)}
             />
-            <FilterOptions>
-              <Option>
-                <FoundationIcon name="arrows-out" backgroundColor="#FFF" color="#AAA" size={30} />
-              </Option>
-              <Text>Ordenar por padrão</Text>
-            </FilterOptions>
-            <FilterOptions>
-              <Option>
-                <FoundationIcon name="dollar" backgroundColor="#FFF" color="#AAA" size={46} />
-              </Option>
-              <Text>Preço</Text>
-            </FilterOptions>
-            <FilterOptions>
-              <Option>
-                <EntypoIcon name="game-controller" backgroundColor="#FFF" color="#AAA" size={28} />
-              </Option>
-              <Text>Pontuação</Text>
-            </FilterOptions>
-            <FilterOptions>
-              <Option>
-                <FontAwesomeIcon name="sort-alpha-asc" backgroundColor="#FFF" color="#AAA" size={28} />
-              </Option>
-              <Text>Ordem alfabética</Text>
-            </FilterOptions>
+            <FilterOption
+              text="Ordenar por padrão"
+              icon={<FoundationIcon name="arrows-out" size={30} />}
+            />
+            <FilterOption
+              text="Preço"
+              icon={<FoundationIcon name="dollar" size={46} />}
+            />
+            <FilterOption
+              text="Pontuação"
+              icon={<EntypoIcon name="game-controller" size={28} />}
+            />
+            <FilterOption
+              text="Ordem alfabética"
+              icon={<FontAwesomeIcon name="sort-alpha-asc" size={28} />}
+            />
           </FilterBox>
         </FilterArea>
       )}

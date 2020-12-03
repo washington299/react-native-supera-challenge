@@ -39,20 +39,3 @@ export const FilterBox = styled.View`
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
 `;
-
-export const FilterOptions = styled.View`
-  width: 50%;
-  margin: 30px 0;
-  justify-content: center;
-  align-items: center;
-`;
-
-export const Option = styled.View`
-  width: 80px;
-  height: 80px;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 5px;
-  border: 1px solid #CCC;
-  border-radius: 40px;
-`;
