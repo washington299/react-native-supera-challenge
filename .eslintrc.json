@@ -20,6 +20,7 @@
     "rules": {
         "react/jsx-filename-extension": "off",
         "react/style-prop-object": "off",
-        "react/prop-types": "off"
+        "react/prop-types": "off",
+        "default-case": "off"
     }
 }
