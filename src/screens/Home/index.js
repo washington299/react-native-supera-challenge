@@ -21,6 +21,7 @@ import Container, {
 const Home = () => {
   const [games, setGame] = useState([]);
   const [hideFilters, setHideFilters] = useState(true);
+  const [activeFilter, setActiveFilter] = useState('default');
 
   useEffect(() => {
     async function getProducts() {
@@ -54,34 +55,53 @@ const Home = () => {
       {!hideFilters && (
         <FilterArea>
           <FilterBox>
-            <AntDesignIcon
-              name="close"
-              backgroundColor="#FFF"
-              color="#AAA"
-              size={28}
-              style={{
-                alignSelf: 'flex-end',
-                position: 'absolute',
-                top: 5,
-                right: 5,
-              }}
-              onPress={() => setHideFilters(true)}
-            />
             <FilterOption
+              setActiveFilter={() => { setActiveFilter('default'); setHideFilters(true); }}
               text="Ordenar por padrão"
-              icon={<FoundationIcon name="arrows-out" size={30} />}
+              backgroundColor={activeFilter === 'default' ? '#1e90ff' : '#FFF'}
+              icon={(
+                <FoundationIcon
+                  name="arrows-out"
+                  size={36}
+                  style={activeFilter === 'default' ? { color: '#FFF' } : { color: '#AAA' }}
+                />
+              )}
             />
             <FilterOption
+              setActiveFilter={() => { setActiveFilter('price'); setHideFilters(true); }}
               text="Preço"
-              icon={<FoundationIcon name="dollar" size={46} />}
+              backgroundColor={activeFilter === 'price' ? '#1e90ff' : '#FFF'}
+              icon={(
+                <FoundationIcon
+                  name="dollar"
+                  size={46}
+                  style={activeFilter === 'price' ? { color: '#FFF' } : { color: '#AAA' }}
+                />
+              )}
             />
             <FilterOption
+              setActiveFilter={() => { setActiveFilter('score'); setHideFilters(true); }}
               text="Pontuação"
-              icon={<EntypoIcon name="game-controller" size={28} />}
+              backgroundColor={activeFilter === 'score' ? '#1e90ff' : '#FFF'}
+              icon={(
+                <EntypoIcon
+                  name="game-controller"
+                  size={28}
+                  style={activeFilter === 'score' ? { color: '#FFF' } : { color: '#AAA' }}
+                />
+              )}
             />
             <FilterOption
+              setActiveFilter={() => { setActiveFilter('sort-alpha-asc'); setHideFilters(true); }}
               text="Ordem alfabética"
-              icon={<FontAwesomeIcon name="sort-alpha-asc" size={28} />}
+              backgroundColor={activeFilter === 'sort-alpha-asc' ? '#1e90ff' : '#FFF'}
+              icon={(
+                <FontAwesomeIcon
+                  name="sort-alpha-asc"
+                  size={28}
+                  style={activeFilter === 'sort-alpha-asc' ? { color: '#FFF' } : { color: '#AAA' }}
+                />
+              )}
             />
           </FilterBox>
         </FilterArea>

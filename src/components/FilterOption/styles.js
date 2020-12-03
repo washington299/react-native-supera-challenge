@@ -1,6 +1,6 @@
 import styled from 'styled-components/native';
 
-export default styled.View`
+export default styled.TouchableOpacity`
   width: 50%;
   margin: 30px 0;
   justify-content: center;
