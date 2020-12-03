@@ -19,17 +19,47 @@ import Container, {
 } from './styles';
 
 const Home = () => {
-  const [games, setGame] = useState([]);
+  const [games, setGames] = useState([]);
   const [hideFilters, setHideFilters] = useState(true);
   const [activeFilter, setActiveFilter] = useState('default');
 
+  async function getProducts() {
+    const res = await api.getProducts('/products.json');
+    setGames(res);
+  }
+  async function filterByPrice() {
+    const res = await api.filterByPrice('/products.json');
+    setGames(res);
+  }
+  async function filterByScore() {
+    const res = await api.filterByScore('/products.json');
+    setGames(res);
+  }
+  async function filterByAlphaAsc() {
+    const res = await api.filterByAlphaAsc('/products.json');
+    setGames(res);
+  }
+
   useEffect(() => {
-    async function getProducts() {
-      const res = await api.getProducts('/products.json');
-      setGame(res);
+    switch (activeFilter) {
+      case 'default': {
+        getProducts();
+        break;
+      }
+      case 'price': {
+        filterByPrice();
+        break;
+      }
+      case 'score': {
+        filterByScore();
+        break;
+      }
+      case 'sort-alpha-asc': {
+        filterByAlphaAsc();
+        break;
+      }
     }
-    getProducts();
-  }, []);
+  }, [activeFilter]);
 
   return (
     <Container>
@@ -56,7 +86,8 @@ const Home = () => {
         <FilterArea>
           <FilterBox>
             <FilterOption
-              setActiveFilter={() => { setActiveFilter('default'); setHideFilters(true); }}
+              setActiveFilter={() => { setActiveFilter('default'); }}
+              setHideFilters={() => { setHideFilters(true); }}
               text="Ordenar por padrão"
               backgroundColor={activeFilter === 'default' ? '#1e90ff' : '#FFF'}
               icon={(
@@ -68,7 +99,8 @@ const Home = () => {
               )}
             />
             <FilterOption
-              setActiveFilter={() => { setActiveFilter('price'); setHideFilters(true); }}
+              setActiveFilter={() => { setActiveFilter('price'); }}
+              setHideFilters={() => { setHideFilters(true); }}
               text="Preço"
               backgroundColor={activeFilter === 'price' ? '#1e90ff' : '#FFF'}
               icon={(
@@ -80,7 +112,8 @@ const Home = () => {
               )}
             />
             <FilterOption
-              setActiveFilter={() => { setActiveFilter('score'); setHideFilters(true); }}
+              setActiveFilter={() => { setActiveFilter('score'); }}
+              setHideFilters={() => { setHideFilters(true); }}
               text="Pontuação"
               backgroundColor={activeFilter === 'score' ? '#1e90ff' : '#FFF'}
               icon={(
@@ -92,7 +125,8 @@ const Home = () => {
               )}
             />
             <FilterOption
-              setActiveFilter={() => { setActiveFilter('sort-alpha-asc'); setHideFilters(true); }}
+              setActiveFilter={() => { setActiveFilter('sort-alpha-asc'); }}
+              setHideFilters={() => { setHideFilters(true); }}
               text="Ordem alfabética"
               backgroundColor={activeFilter === 'sort-alpha-asc' ? '#1e90ff' : '#FFF'}
               icon={(
