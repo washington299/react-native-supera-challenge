@@ -76,9 +76,7 @@ const Home = () => {
           {games.map((game) => (
             <Product
               key={game.id}
-              img={game.image}
-              name={game.name}
-              price={game.price}
+              game={game}
             />
           ))}
         </ProductsArea>
