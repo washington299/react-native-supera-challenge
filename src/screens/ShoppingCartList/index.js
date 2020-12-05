@@ -46,11 +46,11 @@ const ShoppingCartList = () => {
               <ProductText>{product.name}</ProductText>
               <ProductText>{formatCurrency(product.price)}</ProductText>
               <ProductActions>
-                <TouchableOpacity onPress={() => dispatch({ type: 'REMOVE_PRODUCT', payload: {} })}>
+                <TouchableOpacity onPress={() => dispatch({ type: product.quantity === 1 ? 'REMOVE_PRODUCT' : 'DECREASE', payload: { product } })}>
                   <MaterialIcon name="remove-circle-outline" color="#F00" size={40} />
                 </TouchableOpacity>
-                <ProductQuantity>{product.quantity}</ProductQuantity>
-                <TouchableOpacity onPress={() => dispatch({ type: 'ADD_PRODUCT', payload: { product } })}>
+                <ProductQuantity editable={false}>{product.quantity}</ProductQuantity>
+                <TouchableOpacity onPress={() => dispatch({ type: 'INCREASE', payload: { product } })}>
                   <MaterialIcon name="add-circle-outline" color="#0A0" size={40} />
                 </TouchableOpacity>
               </ProductActions>
@@ -58,10 +58,12 @@ const ShoppingCartList = () => {
           </Product>
         ))}
       </ProductsArea>
-      {state.quantity !== 0 && (
+      {state.quantity > 0 && (
         <PurchaseArea>
-          <ProductText style={{ margin: 5 }}>{`Frete: ${formatCurrency(state.quantity * state.shipPerProduct)}`}</ProductText>
-          <ProductText style={{ margin: 5 }}>{`Total: ${formatCurrency(0)}`}</ProductText>
+          <ProductText style={{ margin: 5 }}>
+            {`Frete: ${state.total < 250 ? formatCurrency(state.quantity * state.shipPerProduct) : 'Grátis'}`}
+          </ProductText>
+          <ProductText style={{ margin: 5 }}>{`Total: ${formatCurrency(state.total)}`}</ProductText>
           <PurchaseButton>
             <PurchaseButtonText>Finalizar compra</PurchaseButtonText>
           </PurchaseButton>
