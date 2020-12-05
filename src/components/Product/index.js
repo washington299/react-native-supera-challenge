@@ -26,7 +26,7 @@ const Product = ({ game }) => {
           {formatCurrency(game.price)}
         </Price>
       </Info>
-      <Button onPress={() => dispatch({ type: 'ADD_PRODUCT', payload: { products: game } })}>
+      <Button onPress={() => dispatch({ type: 'ADD_PRODUCT', payload: { product: game } })}>
         <ButtonText>Adicionar ao carrinho</ButtonText>
       </Button>
     </Container>

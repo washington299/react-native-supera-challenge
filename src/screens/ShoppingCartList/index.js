@@ -1,6 +1,8 @@
 import React, { useContext } from 'react';
 import { View } from 'react-native';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 import EntypoIcon from 'react-native-vector-icons/Entypo';
+import MaterialIcon from 'react-native-vector-icons/MaterialIcons';
 
 import { ProductsContext } from '../../contexts/productsContext';
 
@@ -21,7 +23,7 @@ import Container, {
 } from './styles';
 
 const ShoppingCartList = () => {
-  const { state } = useContext(ProductsContext);
+  const { state, dispatch } = useContext(ProductsContext);
 
   return (
     <Container>
@@ -44,19 +46,27 @@ const ShoppingCartList = () => {
               <ProductText>{product.name}</ProductText>
               <ProductText>{formatCurrency(product.price)}</ProductText>
               <ProductActions>
-                <ProductQuantity>0</ProductQuantity>
+                <TouchableOpacity onPress={() => dispatch({ type: 'REMOVE_PRODUCT', payload: {} })}>
+                  <MaterialIcon name="remove-circle-outline" color="#F00" size={40} />
+                </TouchableOpacity>
+                <ProductQuantity>{product.quantity}</ProductQuantity>
+                <TouchableOpacity onPress={() => dispatch({ type: 'ADD_PRODUCT', payload: { product } })}>
+                  <MaterialIcon name="add-circle-outline" color="#0A0" size={40} />
+                </TouchableOpacity>
               </ProductActions>
             </ProductInfo>
           </Product>
         ))}
       </ProductsArea>
-      <PurchaseArea>
-        <ProductText style={{ margin: 5 }}>{`Frete: ${formatCurrency(30)}`}</ProductText>
-        <ProductText style={{ margin: 5 }}>{`Total: ${formatCurrency(0)}`}</ProductText>
-        <PurchaseButton>
-          <PurchaseButtonText>Finalizar compra</PurchaseButtonText>
-        </PurchaseButton>
-      </PurchaseArea>
+      {state.quantity !== 0 && (
+        <PurchaseArea>
+          <ProductText style={{ margin: 5 }}>{`Frete: ${formatCurrency(state.quantity * state.shipPerProduct)}`}</ProductText>
+          <ProductText style={{ margin: 5 }}>{`Total: ${formatCurrency(0)}`}</ProductText>
+          <PurchaseButton>
+            <PurchaseButtonText>Finalizar compra</PurchaseButtonText>
+          </PurchaseButton>
+        </PurchaseArea>
+      )}
     </Container>
   );
 };

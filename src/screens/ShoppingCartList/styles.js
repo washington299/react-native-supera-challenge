@@ -44,12 +44,18 @@ export const ProductText = styled.Text`
 `;
 
 export const ProductActions = styled.View`
+  flex-direction: row;
+  align-items: center;
   position: absolute;
   right: 0;
   bottom: 0;
 `;
 
-export const ProductQuantity = styled.TextInput``;
+export const ProductQuantity = styled.TextInput`
+  border: 1px solid #DDD;
+  padding: 5px 10px;
+  margin: 0 10px;
+`;
 
 export const EmptyCarMsg = styled.Text`
   font-size: 20px;
