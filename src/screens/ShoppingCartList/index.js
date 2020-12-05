@@ -25,6 +25,8 @@ import Container, {
 const ShoppingCartList = () => {
   const { state, dispatch } = useContext(ProductsContext);
 
+  const ship = state.total < 250 ? state.quantity * state.shipPerProduct : 0;
+
   return (
     <Container>
       <ProductsArea>
@@ -61,9 +63,12 @@ const ShoppingCartList = () => {
       {state.quantity > 0 && (
         <PurchaseArea>
           <ProductText style={{ margin: 5 }}>
-            {`Frete: ${state.total < 250 ? formatCurrency(state.quantity * state.shipPerProduct) : 'Grátis'}`}
+            {`Frete: ${formatCurrency(ship)}`}
           </ProductText>
-          <ProductText style={{ margin: 5 }}>{`Total: ${formatCurrency(state.total)}`}</ProductText>
+          <ProductText style={{ margin: 5 }}>{`Subtotal: ${formatCurrency(state.total)}`}</ProductText>
+          <ProductText style={{ margin: 5 }}>
+            {`Total: ${formatCurrency(state.total + ship)}`}
+          </ProductText>
           <PurchaseButton>
             <PurchaseButtonText>Finalizar compra</PurchaseButtonText>
           </PurchaseButton>
