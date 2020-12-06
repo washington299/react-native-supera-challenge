@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { View } from 'react-native';
+import { View, Text } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import EntypoIcon from 'react-native-vector-icons/Entypo';
 import MaterialIcon from 'react-native-vector-icons/MaterialIcons';
@@ -41,6 +41,7 @@ const ShoppingCartList = () => {
           <Title>Jogos no carrinho</Title>
           <EntypoIcon name="game-controller" size={24} style={{ color: '#000', marginLeft: 10 }} />
         </View>
+        {state.quantity === 0 && <Text style={{ textAlign: 'center' }}>Carrinho vazio...</Text>}
         {state.products.map((product) => (
           <Product key={product.id}>
             <ProductImg source={{ uri: `http://10.0.0.16:19001/assets/${product.image}` }} />
@@ -63,7 +64,7 @@ const ShoppingCartList = () => {
       {state.quantity > 0 && (
         <PurchaseArea>
           <ProductText style={{ margin: 5 }}>
-            {`Frete: ${formatCurrency(ship)}`}
+            {`Frete: ${ship === 0 ? 'Grátis' : formatCurrency(ship)}`}
           </ProductText>
           <ProductText style={{ margin: 5 }}>{`Subtotal: ${formatCurrency(state.total)}`}</ProductText>
           <ProductText style={{ margin: 5 }}>
