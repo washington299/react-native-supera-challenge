@@ -1,9 +1,10 @@
 {
   "expo": {
-    "name": "react-native-supepra-challenge",
-    "slug": "react-native-supepra-challenge",
+    "name": "react-native-supera-challenge",
+    "slug": "react-native-supera-challenge",
     "version": "1.0.0",
     "orientation": "portrait",
+    "icon": "./assets/up.png",
     "splash": {
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
@@ -34,12 +35,11 @@
       "supportsTablet": true
     },
     "android": {
-      "adaptiveIcon": {
-        "backgroundColor": "#FFFFFF"
-      }
+      "package": "com.supera.reactnativetest",
+      "versionCode": 1
     },
     "web": {
-      "favicon": ""
+      "favicon": "./assets/up.png"
     }
   }
 }
