@@ -6,17 +6,14 @@ export const initialState = {
 };
 
 export const reducer = (state = initialState, action) => {
+  const payloadProduct = action.payload.product;
+
   switch (action.type) {
     case 'ADD_PRODUCT':
-      if (!state.products.find((product) => product.id === action.payload.product.id)) {
-        state.products.push({
-          ...action.payload.product,
-          quantity: 1,
-        });
+      if (!state.products.find((product) => product.id === payloadProduct.id)) {
+        state.products.push({ ...payloadProduct, quantity: 1 });
       } else {
-        const cacheProduct = state.products.find((product) => (
-          product.id === action.payload.product.id
-        ));
+        const cacheProduct = state.products.find((product) => product.id === payloadProduct.id);
         cacheProduct.quantity += 1;
         const index = state.products.indexOf(cacheProduct);
         state.products[index] = cacheProduct;
@@ -25,26 +22,22 @@ export const reducer = (state = initialState, action) => {
       return {
         ...state,
         quantity: state.quantity + 1,
-        total: state.total + action.payload.product.price,
+        total: state.total + payloadProduct.price,
       };
 
     case 'REMOVE_PRODUCT': {
-      const cacheProduct = state.products.find((product) => (
-        product.id === action.payload.product.id
-      ));
+      const cacheProduct = state.products.find((product) => product.id === payloadProduct.id);
 
       return {
         ...state,
-        products: state.products.filter((product) => product.id !== action.payload.product.id),
+        products: state.products.filter((product) => product.id !== payloadProduct.id),
         quantity: state.quantity - cacheProduct.quantity,
-        total: state.total - (action.payload.product.price * cacheProduct.quantity),
+        total: state.total - (payloadProduct.price * cacheProduct.quantity),
       };
     }
 
     case 'INCREASE': {
-      const cacheProduct = state.products.find((product) => (
-        product.id === action.payload.product.id
-      ));
+      const cacheProduct = state.products.find((product) => product.id === payloadProduct.id);
 
       cacheProduct.quantity += 1;
       const index = state.products.indexOf(cacheProduct);
@@ -53,14 +46,12 @@ export const reducer = (state = initialState, action) => {
       return {
         ...state,
         quantity: state.quantity + 1,
-        total: state.total + action.payload.product.price,
+        total: state.total + payloadProduct.price,
       };
     }
 
     case 'DECREASE': {
-      const cacheProduct = state.products.find((product) => (
-        product.id === action.payload.product.id
-      ));
+      const cacheProduct = state.products.find((product) => product.id === payloadProduct.id);
 
       cacheProduct.quantity -= 1;
       const index = state.products.indexOf(cacheProduct);
@@ -69,7 +60,7 @@ export const reducer = (state = initialState, action) => {
       return {
         ...state,
         quantity: state.quantity - 1,
-        total: state.total - action.payload.product.price,
+        total: state.total - payloadProduct.price,
       };
     }
 
