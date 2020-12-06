@@ -30,7 +30,7 @@ export const Button = styled.TouchableOpacity`
   background-color: #1e90ff;
   margin: 5px;
   padding: 5px;
-  border-radius: 8px;
+  border-radius: 5px;
 `;
 
 export const ButtonText = styled.Text`

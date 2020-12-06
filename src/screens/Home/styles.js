@@ -9,7 +9,7 @@ export const FilterButton = styled.TouchableOpacity`
   width: 120px;
   margin: 20px 0 0 20px;
   border: 1px solid #DDD;
-  border-radius: 8px;
+  border-radius: 5px;
 `;
 
 export const ProductsArea = styled.View`

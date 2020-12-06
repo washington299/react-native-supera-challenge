@@ -75,6 +75,7 @@ export const PurchaseButton = styled.TouchableOpacity`
   padding: 10px 5px;
   margin-top: 10px;
   background-color: #1e90ff;
+  border-radius: 5px;
 `;
 
 export const PurchaseButtonText = styled.Text`
