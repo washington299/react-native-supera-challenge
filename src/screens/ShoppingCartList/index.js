@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { View, Text } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import { useNavigation } from '@react-navigation/native';
 import EntypoIcon from 'react-native-vector-icons/Entypo';
 import MaterialIcon from 'react-native-vector-icons/MaterialIcons';
 
@@ -25,6 +26,7 @@ import Container, {
 
 const ShoppingCartList = () => {
   const { state, dispatch } = useContext(ProductsContext);
+  const navigation = useNavigation();
 
   const ship = state.total < 250 ? state.quantity * state.shipPerProduct : 0;
 
@@ -71,7 +73,11 @@ const ShoppingCartList = () => {
           <ProductText style={{ margin: 5 }}>
             {`Total: ${formatCurrency(state.total + ship)}`}
           </ProductText>
-          <PurchaseButton>
+          <PurchaseButton onPress={() => {
+            alert('Compra finalizada com sucesso 😄');
+            navigation.navigate('Home');
+          }}
+          >
             <PurchaseButtonText>Finalizar compra</PurchaseButtonText>
           </PurchaseButton>
         </PurchaseArea>
