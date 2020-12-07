@@ -8,6 +8,7 @@ import { ProductsContext } from '../../contexts/productsContext';
 
 import formatCurrency from '../../helpers/formatCurrency';
 
+import Images from '../../styles/globalStyles';
 import Container, {
   Title,
   ProductsArea,
@@ -44,7 +45,7 @@ const ShoppingCartList = () => {
         {state.quantity === 0 && <Text style={{ textAlign: 'center' }}>Carrinho vazio...</Text>}
         {state.products.map((product) => (
           <Product key={product.id}>
-            <ProductImg source={{ uri: `http://10.0.0.16:19001/assets/${product.image}` }} />
+            <ProductImg source={Images.games[product.image]} />
             <ProductInfo>
               <ProductText>{product.name}</ProductText>
               <ProductText>{formatCurrency(product.price)}</ProductText>

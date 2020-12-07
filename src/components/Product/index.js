@@ -3,6 +3,7 @@ import React, { useContext } from 'react';
 import { ProductsContext } from '../../contexts/productsContext';
 import formatCurrency from '../../helpers/formatCurrency';
 
+import Image from '../../styles/globalStyles';
 import Container, {
   Img,
   Info,
@@ -17,7 +18,7 @@ const Product = ({ game }) => {
 
   return (
     <Container>
-      <Img source={{ uri: `http://10.0.0.16:19001/assets/${game.image}` }} />
+      <Img source={Image.games[game.image]} />
       <Info>
         <Name>{game.name}</Name>
         <Price>
